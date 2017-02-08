@@ -1,0 +1,33 @@
+﻿body {
+    background-color:#f3f3f3;
+}
+
+.TextBox{
+    border-radius: 10px 10px 10px 10px;
+    margin-bottom:10px;
+    text-align:center;
+    color: #0069ff;
+    font-weight:700;
+    font-size:large;
+}
+.Text{
+    color:#0069ff;
+    font-weight:700;
+    font-size:larger;
+}
+.Button{
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 30px;
+  background: #0896ff;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.Button:hover {
+  background: #003580;
+  text-decoration: none;
+}
