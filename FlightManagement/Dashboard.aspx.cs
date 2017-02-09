@@ -11,20 +11,28 @@ namespace FlightManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+           
         }
         //FALTA DEJAR LISTOS LOS ASIENTOS
-        public GridViewRow GetValues() {
-
+        public GridViewRow GetValues()
+        {
             if (DDFT.SelectedValue != "Choose")
             {
-                GridViewRow row = GridView1.Rows[Int32.Parse(DDFT.SelectedValue) - 1];
-                TextBoxDeparture.Text = row.Cells[3].Text;
-                TextBoxArrived.Text   = row.Cells[4].Text;
-                TextBoxCompany.Text   = row.Cells[9].Text;
+                GridViewRow row = GridView1.Rows[0];
+                foreach (GridViewRow Row in GridView1.Rows)
+                {
+                    if (Int32.Parse(DDFT.SelectedValue) == Int32.Parse(Row.Cells[0].Text.ToString()))
+                    {
+                        row = Row;
+                        TextBoxDeparture.Text = row.Cells[3].Text;
+                        TextBoxArrived.Text = row.Cells[4].Text;
+                        TextBoxCompany.Text = row.Cells[9].Text;
+                        break;
+                    }
+                }
                 return row;
             }
-            return null;  
+            return null;
         }
 
         public void SetSeats() {
@@ -39,12 +47,26 @@ namespace FlightManagement
 
         protected void ButtonGetValues_Click(object sender, EventArgs e)
         {
+           Char[] delimiter = { '-' };
+           string[] values = DDRow.SelectedValue.Split(delimiter);
+           int rowSelected = Int32.Parse(values[0]);
+           string seatSelected = values[1].ToString();
+
+           InsertSale.InsertSale sale = new InsertSale.InsertSale();
+            
+           Response result = sale.SaleRequest(rowSelected, seatSelected.ToString(), Int32.Parse(DDFT.SelectedValue), Int32.Parse(DDCustomer.SelectedValue));
+            
+            if (result.Result)
+            {
+                LabelResult.Text = result.ResultDescription.ToString();
+                SetSeats();
+                DDRow.DataBind();
+            }
+        }
+        protected void DDFT_Change(object sender, EventArgs e)
+        {
             SetSeats();
-            InsertSale.InsertSale sale = new InsertSale.InsertSale();
-            
-           // Response result = sale.SaleRequest(Int32.Parse(DDRow.SelectedValue), DDColumn.SelectedValue.ToString(),Int32.Parse(DDFT.SelectedValue), Int32.Parse(DDCustomer.SelectedValue));
-            
-            
+            DDRow.DataBind();
         }
     }
 }

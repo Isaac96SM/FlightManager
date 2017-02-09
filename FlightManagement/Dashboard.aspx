@@ -26,8 +26,7 @@
         <asp:Label ID="LabelFT" runat="server" Text="ForTo" CssClass="Text"></asp:Label>
         <br />
     
-        <asp:DropDownList ID="DDFT" runat="server" DataSourceID="SqlDataSourceFT" DataTextField="FT" DataValueField="Code" AppendDataBoundItems="true" CssClass="TextBox">
-            <asp:ListItem Text="Choose" Selected="True" Value="Choose"></asp:ListItem>
+        <asp:DropDownList ID="DDFT" AutoPostBack="true" runat="server" DataSourceID="SqlDataSourceFT" DataTextField="FT" DataValueField="Code" OnSelectedIndexChanged="DDFT_Change" AppendDataBoundItems="true" CssClass="TextBox">
         </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
@@ -45,16 +44,23 @@
         <br />
         <asp:TextBox ID="TextBoxCompany" runat="server" CssClass="TextBox"></asp:TextBox>
         <br />
-        <asp:DropDownList ID="DDRow" runat="server" DataSourceID="SqlDataSourceRow" DataTextField="Row" DataValueField="Row" CssClass="TextBox">
+        <asp:DropDownList ID="DDRow" runat="server" DataSourceID="SqlDataSourceRow" DataTextField="Full" DataValueField="Full" CssClass="TextBox">
         </asp:DropDownList>
-        <asp:DropDownList ID="DDColumn" runat="server" DataSourceID="SqlDataSourceColumn" DataTextField="Seat" DataValueField="Seat" CssClass="TextBox">
-        </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSourceRow" runat="server" ConnectionString="<%$ ConnectionStrings:qt487ConnectionString %>" SelectCommand="SELECT Row FROM Flight_Seat GROUP BY Row"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSourceColumn" runat="server" ConnectionString="<%$ ConnectionStrings:qt487ConnectionString %>" SelectCommand="select Seat from qt487.Flight_Seat GROUP BY Seat"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSourceRow" runat="server" ConnectionString="<%$ ConnectionStrings:qt487ConnectionString %>" SelectCommand="SELECT [RowID], [SeatID], CAST(RowID as NVARCHAR(2))+'-'+SeatID AS [Full] 
+FROM [Flight_Sale] WHERE (([CustomerID] IS NULL) AND ([TravelID] = @TravelID))
+select * from Flight_Travel">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="DDFT" DefaultValue="" Name="TravelID" PropertyName="SelectedValue" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <br />
         <br />
     
         <asp:Button ID="ButtonGetValues" runat="server" OnClick="ButtonGetValues_Click" Text="Get Travel Data" CssClass="Button" />
+    
+        <br />
+        <br />
+        <asp:Label ID="LabelResult" runat="server" CssClass="LabelResult"></asp:Label>
     
         <br />
     

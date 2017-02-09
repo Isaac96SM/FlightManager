@@ -139,15 +139,6 @@ namespace FlightManagement {
         protected global::System.Web.UI.WebControls.DropDownList DDRow;
         
         /// <summary>
-        /// Control DDColumn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDColumn;
-        
-        /// <summary>
         /// Control SqlDataSourceRow.
         /// </summary>
         /// <remarks>
@@ -157,15 +148,6 @@ namespace FlightManagement {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceRow;
         
         /// <summary>
-        /// Control SqlDataSourceColumn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceColumn;
-        
-        /// <summary>
         /// Control ButtonGetValues.
         /// </summary>
         /// <remarks>
@@ -173,6 +155,15 @@ namespace FlightManagement {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonGetValues;
+        
+        /// <summary>
+        /// Control LabelResult.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelResult;
         
         /// <summary>
         /// Control GridView1.
