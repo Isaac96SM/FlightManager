@@ -56,7 +56,7 @@ select * from Flight_Travel">
         <br />
         <br />
     
-        <asp:Button ID="ButtonGetValues" runat="server" OnClick="ButtonGetValues_Click" Text="Get Travel Data" CssClass="Button" />
+        <asp:Button ID="ButtonGetValues" runat="server" OnClick="ButtonGetValues_Click" Text="Buy!" CssClass="Button" />
     
         <br />
         <br />
