@@ -5,46 +5,57 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<LINK REL="stylesheet" TYPE="text/css" HREF="Style.css">
+
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
     
-        <asp:DropDownList ID="DDCustomer" runat="server" DataSourceID="SqlDataSourceCustomers" DataTextField="Customer" DataValueField="Code" AppendDataBoundItems="true">
+        <asp:Label ID="LabelCustomer" runat="server" Text="Customer" CssClass="Text"></asp:Label>
+        <br />
+    
+        <asp:DropDownList ID="DDCustomer" runat="server" DataSourceID="SqlDataSourceCustomers" DataTextField="Customer" DataValueField="Code" AppendDataBoundItems="true" CssClass="TextBox">
             <asp:ListItem Text="Choose" Selected="True" Value="Choose"></asp:ListItem>
         </asp:DropDownList>
-        <asp:Label ID="LabelCustomer" runat="server" Text="Customer"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
         <asp:SqlDataSource ID="SqlDataSourceCustomers" runat="server" ConnectionString="<%$ ConnectionStrings:qt487ConnectionString %>" SelectCommand="select *, Surname +'-'+dni AS Customer from Flight_Customers"></asp:SqlDataSource>
         <br />
+        <asp:Label ID="LabelFT" runat="server" Text="ForTo" CssClass="Text"></asp:Label>
+        <br />
     
-        <asp:DropDownList ID="DDFT" runat="server" DataSourceID="SqlDataSourceFT" DataTextField="FT" DataValueField="Code" AppendDataBoundItems="true">
+        <asp:DropDownList ID="DDFT" runat="server" DataSourceID="SqlDataSourceFT" DataTextField="FT" DataValueField="Code" AppendDataBoundItems="true" CssClass="TextBox">
             <asp:ListItem Text="Choose" Selected="True" Value="Choose"></asp:ListItem>
         </asp:DropDownList>
-        <asp:Label ID="LabelFT" runat="server" Text="ForTo"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    
-        <asp:Button ID="ButtonGetValues" runat="server" OnClick="ButtonGetValues_Click" Text="Get Travel Data" />
     
         <asp:SqlDataSource ID="SqlDataSourceFT" runat="server" ConnectionString="<%$ ConnectionStrings:qt487ConnectionString %>" SelectCommand="SELECT *, Origin + '-' + Destination AS FT  FROM qt487.Flight_Travel"></asp:SqlDataSource>
         <br />
-        <asp:TextBox ID="TextBoxDeparture" runat="server"></asp:TextBox>
-        <asp:Label ID="LDeparture" runat="server" Text="Departure"></asp:Label>
+        <asp:Label ID="LDeparture" runat="server" Text="Departure" CssClass="Text"></asp:Label>
         <br />
-        <asp:TextBox ID="TextBoxArrived" runat="server"></asp:TextBox>
-        <asp:Label ID="LArrived" runat="server" Text="Arrived"></asp:Label>
+        <asp:TextBox ID="TextBoxDeparture" runat="server" CssClass="TextBox"></asp:TextBox>
         <br />
-        <asp:TextBox ID="TextBoxCompany" runat="server"></asp:TextBox>
-        <asp:Label ID="LCompany" runat="server" Text="Company"></asp:Label>
+        <asp:Label ID="LArrived" runat="server" Text="Arrived" CssClass="Text"></asp:Label>
         <br />
-        <asp:DropDownList ID="DDRow" runat="server" DataSourceID="SqlDataSourceRow" DataTextField="Row" DataValueField="Row">
+        <asp:TextBox ID="TextBoxArrived" runat="server" CssClass="TextBox"></asp:TextBox>
+        <br />
+        <asp:Label ID="LCompany" runat="server" Text="Company" CssClass="Text"></asp:Label>
+        <br />
+        <asp:TextBox ID="TextBoxCompany" runat="server" CssClass="TextBox"></asp:TextBox>
+        <br />
+        <asp:DropDownList ID="DDRow" runat="server" DataSourceID="SqlDataSourceRow" DataTextField="Row" DataValueField="Row" CssClass="TextBox">
         </asp:DropDownList>
-        <asp:DropDownList ID="DDColumn" runat="server" DataSourceID="SqlDataSourceColumn" DataTextField="Seat" DataValueField="Seat">
+        <asp:DropDownList ID="DDColumn" runat="server" DataSourceID="SqlDataSourceColumn" DataTextField="Seat" DataValueField="Seat" CssClass="TextBox">
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSourceRow" runat="server" ConnectionString="<%$ ConnectionStrings:qt487ConnectionString %>" SelectCommand="SELECT Row FROM Flight_Seat GROUP BY Row"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSourceColumn" runat="server" ConnectionString="<%$ ConnectionStrings:qt487ConnectionString %>" SelectCommand="select Seat from qt487.Flight_Seat GROUP BY Seat"></asp:SqlDataSource>
+        <br />
+        <br />
+    
+        <asp:Button ID="ButtonGetValues" runat="server" OnClick="ButtonGetValues_Click" Text="Get Travel Data" CssClass="Button" />
+    
         <br />
     
         <br />

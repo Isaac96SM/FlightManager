@@ -22,15 +22,6 @@ namespace FlightManagement {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control DDCustomer.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDCustomer;
-        
-        /// <summary>
         /// Control LabelCustomer.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace FlightManagement {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelCustomer;
+        
+        /// <summary>
+        /// Control DDCustomer.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDCustomer;
         
         /// <summary>
         /// Control SqlDataSourceCustomers.
@@ -49,15 +49,6 @@ namespace FlightManagement {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCustomers;
         
         /// <summary>
-        /// Control DDFT.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDFT;
-        
-        /// <summary>
         /// Control LabelFT.
         /// </summary>
         /// <remarks>
@@ -67,13 +58,13 @@ namespace FlightManagement {
         protected global::System.Web.UI.WebControls.Label LabelFT;
         
         /// <summary>
-        /// Control ButtonGetValues.
+        /// Control DDFT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonGetValues;
+        protected global::System.Web.UI.WebControls.DropDownList DDFT;
         
         /// <summary>
         /// Control SqlDataSourceFT.
@@ -85,15 +76,6 @@ namespace FlightManagement {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceFT;
         
         /// <summary>
-        /// Control TextBoxDeparture.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxDeparture;
-        
-        /// <summary>
         /// Control LDeparture.
         /// </summary>
         /// <remarks>
@@ -103,13 +85,13 @@ namespace FlightManagement {
         protected global::System.Web.UI.WebControls.Label LDeparture;
         
         /// <summary>
-        /// Control TextBoxArrived.
+        /// Control TextBoxDeparture.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxArrived;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxDeparture;
         
         /// <summary>
         /// Control LArrived.
@@ -121,13 +103,13 @@ namespace FlightManagement {
         protected global::System.Web.UI.WebControls.Label LArrived;
         
         /// <summary>
-        /// Control TextBoxCompany.
+        /// Control TextBoxArrived.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxCompany;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxArrived;
         
         /// <summary>
         /// Control LCompany.
@@ -137,6 +119,15 @@ namespace FlightManagement {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LCompany;
+        
+        /// <summary>
+        /// Control TextBoxCompany.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxCompany;
         
         /// <summary>
         /// Control DDRow.
@@ -173,6 +164,15 @@ namespace FlightManagement {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceColumn;
+        
+        /// <summary>
+        /// Control ButtonGetValues.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonGetValues;
         
         /// <summary>
         /// Control GridView1.
