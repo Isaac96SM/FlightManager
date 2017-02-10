@@ -31,11 +31,13 @@ namespace FlightManagement.InsertSale {
         
         private System.Threading.SendOrPostCallback SaleRequestOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetCustomerOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public InsertSale() {
-            this.Url = global::FlightManagement.Properties.Settings.Default.FlightManagement_net_azurewebsites_flightwebservice_InsertSale;
+            this.Url = global::FlightManagement.Properties.Settings.Default.FlightManagement_InsertSale_InsertSale;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -73,6 +75,9 @@ namespace FlightManagement.InsertSale {
         public event SaleRequestCompletedEventHandler SaleRequestCompleted;
         
         /// <remarks/>
+        public event GetCustomerCompletedEventHandler GetCustomerCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaleRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Response SaleRequest(int parRow, string parSeat, int parTravel, int parCustomer) {
             object[] results = this.Invoke("SaleRequest", new object[] {
@@ -104,6 +109,33 @@ namespace FlightManagement.InsertSale {
             if ((this.SaleRequestCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SaleRequestCompleted(this, new SaleRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCustomer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Customer[] GetCustomer() {
+            object[] results = this.Invoke("GetCustomer", new object[0]);
+            return ((Customer[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCustomerAsync() {
+            this.GetCustomerAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetCustomerAsync(object userState) {
+            if ((this.GetCustomerOperationCompleted == null)) {
+                this.GetCustomerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCustomerOperationCompleted);
+            }
+            this.InvokeAsync("GetCustomer", new object[0], this.GetCustomerOperationCompleted, userState);
+        }
+        
+        private void OnGetCustomerOperationCompleted(object arg) {
+            if ((this.GetCustomerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCustomerCompleted(this, new GetCustomerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -159,6 +191,39 @@ namespace FlightManagement.InsertSale {
         }
     }
     
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Customer {
+        
+        private int codeField;
+        
+        private string nameField;
+        
+        /// <comentarios/>
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void SaleRequestCompletedEventHandler(object sender, SaleRequestCompletedEventArgs e);
@@ -181,6 +246,32 @@ namespace FlightManagement.InsertSale {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Response)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void GetCustomerCompletedEventHandler(object sender, GetCustomerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCustomerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCustomerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Customer[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Customer[])(this.results[0]));
             }
         }
     }

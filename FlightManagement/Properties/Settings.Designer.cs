@@ -27,9 +27,9 @@ namespace FlightManagement.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://flightwebservice.azurewebsites.net/InsertSale.asmx")]
-        public string FlightManagement_net_azurewebsites_flightwebservice_InsertSale {
+        public string FlightManagement_InsertSale_InsertSale {
             get {
-                return ((string)(this["FlightManagement_net_azurewebsites_flightwebservice_InsertSale"]));
+                return ((string)(this["FlightManagement_InsertSale_InsertSale"]));
             }
         }
     }

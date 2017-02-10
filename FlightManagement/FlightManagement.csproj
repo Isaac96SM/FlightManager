@@ -54,15 +54,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\InsertSale\InsertSale.disco" />
-    <Content Include="Web.config" />
-    <Content Include="Web References\InsertSale\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web References\InsertSale\Response1.datasource">
+    <Content Include="Web References\InsertSale\Customer.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\InsertSale\InsertSale.disco" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dashboard.aspx.cs">
@@ -86,6 +82,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\InsertSale\InsertSale.wsdl" />
+    <None Include="Web References\InsertSale\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\InsertSale\Response.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,7 +109,7 @@
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>FlightManagement_net_azurewebsites_flightwebservice_InsertSale</CachedSettingsPropName>
+      <CachedSettingsPropName>FlightManagement_InsertSale_InsertSale</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

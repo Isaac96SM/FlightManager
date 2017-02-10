@@ -25,6 +25,27 @@
           <s:element minOccurs="0" maxOccurs="1" name="ResultDescription" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetCustomer">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerResult" type="tns:ArrayOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCustomer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:Customer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Customer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="SaleRequestSoapIn">
@@ -33,10 +54,20 @@
   <wsdl:message name="SaleRequestSoapOut">
     <wsdl:part name="parameters" element="tns:SaleRequestResponse" />
   </wsdl:message>
+  <wsdl:message name="GetCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomer" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
+  </wsdl:message>
   <wsdl:portType name="InsertSaleSoap">
     <wsdl:operation name="SaleRequest">
       <wsdl:input message="tns:SaleRequestSoapIn" />
       <wsdl:output message="tns:SaleRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <wsdl:input message="tns:GetCustomerSoapIn" />
+      <wsdl:output message="tns:GetCustomerSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InsertSaleSoap" type="tns:InsertSaleSoap">
@@ -50,11 +81,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <soap:operation soapAction="http://tempuri.org/GetCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InsertSaleSoap12" type="tns:InsertSaleSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="SaleRequest">
       <soap12:operation soapAction="http://tempuri.org/SaleRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
