@@ -11,13 +11,14 @@ namespace FlightManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             InsertSale.InsertSale customers = new InsertSale.InsertSale();
 
             Customer[] CustomerList = customers.GetCustomer();
 
             DDCustomer.DataSource = CustomerList;
-            DDCustomer.DataTextField = Name;
-            DDCustomer.DataValueField = CustomerList.Code;
+            DDCustomer.DataTextField = "Name";
+            DDCustomer.DataValueField = "Code";
             DDCustomer.DataBind();
         }
         //FALTA DEJAR LISTOS LOS ASIENTOS

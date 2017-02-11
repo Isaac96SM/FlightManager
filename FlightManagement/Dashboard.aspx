@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<LINK REL="stylesheet" TYPE="text/css" HREF="Style.css">
+<link rel="stylesheet" type="text/css" href="Style.css"/>
 
     <title></title>
 </head>
@@ -16,7 +16,7 @@
         <asp:Label ID="LabelCustomer" runat="server" Text="Customer" CssClass="Text"></asp:Label>
         <br />
     
-        <asp:DropDownList ID="DDCustomer" runat="server" DataSourceID="SqlDataSourceCustomers" DataTextField="Customer" DataValueField="Code" AppendDataBoundItems="true" CssClass="TextBox">
+        <asp:DropDownList ID="DDCustomer" runat="server" AppendDataBoundItems="true" CssClass="TextBox">
             <asp:ListItem Text="Choose" Selected="True" Value="Choose"></asp:ListItem>
         </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
