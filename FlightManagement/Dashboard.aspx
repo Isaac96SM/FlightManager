@@ -21,12 +21,11 @@
         </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
-        <asp:SqlDataSource ID="SqlDataSourceCustomers" runat="server" ConnectionString="<%$ ConnectionStrings:qt487ConnectionString %>" SelectCommand="select *, Surname +'-'+dni AS Customer from Flight_Customers"></asp:SqlDataSource>
         <br />
         <asp:Label ID="LabelFT" runat="server" Text="ForTo" CssClass="Text"></asp:Label>
         <br />
     
-        <asp:DropDownList ID="DDFT" AutoPostBack="true" runat="server" DataSourceID="SqlDataSourceFT" DataTextField="FT" DataValueField="Code" OnSelectedIndexChanged="DDFT_Change" AppendDataBoundItems="true" CssClass="TextBox">
+        <asp:DropDownList ID="DDFT" AutoPostBack="true" runat="server" OnSelectedIndexChanged="DDFT_Change" AppendDataBoundItems="true" CssClass="TextBox">
         </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     

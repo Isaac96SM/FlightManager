@@ -46,6 +46,39 @@
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetTravel">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTravelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTravelResult" type="tns:ArrayOfTravel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTravel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Travel" nillable="true" type="tns:Travel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Travel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Destination" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time_Departure" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time_Arrived" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Duration" type="tns:TimeSpan" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxCapacity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxRow" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxSeatsRow" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origin_Destination" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TimeSpan" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="SaleRequestSoapIn">
@@ -60,6 +93,12 @@
   <wsdl:message name="GetCustomerSoapOut">
     <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
   </wsdl:message>
+  <wsdl:message name="GetTravelSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTravel" />
+  </wsdl:message>
+  <wsdl:message name="GetTravelSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTravelResponse" />
+  </wsdl:message>
   <wsdl:portType name="InsertSaleSoap">
     <wsdl:operation name="SaleRequest">
       <wsdl:input message="tns:SaleRequestSoapIn" />
@@ -68,6 +107,10 @@
     <wsdl:operation name="GetCustomer">
       <wsdl:input message="tns:GetCustomerSoapIn" />
       <wsdl:output message="tns:GetCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTravel">
+      <wsdl:input message="tns:GetTravelSoapIn" />
+      <wsdl:output message="tns:GetTravelSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InsertSaleSoap" type="tns:InsertSaleSoap">
@@ -90,6 +133,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTravel">
+      <soap:operation soapAction="http://tempuri.org/GetTravel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InsertSaleSoap12" type="tns:InsertSaleSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -104,6 +156,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetCustomer">
       <soap12:operation soapAction="http://tempuri.org/GetCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravel">
+      <soap12:operation soapAction="http://tempuri.org/GetTravel" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

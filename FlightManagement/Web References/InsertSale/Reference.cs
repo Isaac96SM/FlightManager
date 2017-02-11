@@ -33,6 +33,8 @@ namespace FlightManagement.InsertSale {
         
         private System.Threading.SendOrPostCallback GetCustomerOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetTravelOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +78,9 @@ namespace FlightManagement.InsertSale {
         
         /// <remarks/>
         public event GetCustomerCompletedEventHandler GetCustomerCompleted;
+        
+        /// <remarks/>
+        public event GetTravelCompletedEventHandler GetTravelCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaleRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -140,6 +145,33 @@ namespace FlightManagement.InsertSale {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTravel", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Travel[] GetTravel() {
+            object[] results = this.Invoke("GetTravel", new object[0]);
+            return ((Travel[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTravelAsync() {
+            this.GetTravelAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetTravelAsync(object userState) {
+            if ((this.GetTravelOperationCompleted == null)) {
+                this.GetTravelOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTravelOperationCompleted);
+            }
+            this.InvokeAsync("GetTravel", new object[0], this.GetTravelOperationCompleted, userState);
+        }
+        
+        private void OnGetTravelOperationCompleted(object arg) {
+            if ((this.GetTravelCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTravelCompleted(this, new GetTravelCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -187,6 +219,180 @@ namespace FlightManagement.InsertSale {
             }
             set {
                 this.resultDescriptionField = value;
+            }
+        }
+    }
+    
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class TimeSpan {
+    }
+    
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Travel {
+        
+        private int codeField;
+        
+        private string originField;
+        
+        private string destinationField;
+        
+        private System.DateTime time_DepartureField;
+        
+        private System.DateTime time_ArrivedField;
+        
+        private TimeSpan durationField;
+        
+        private int maxCapacityField;
+        
+        private int maxRowField;
+        
+        private int maxSeatsRowField;
+        
+        private int companyIDField;
+        
+        private bool statusField;
+        
+        private string companyNameField;
+        
+        private string origin_DestinationField;
+        
+        /// <comentarios/>
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public string Origin {
+            get {
+                return this.originField;
+            }
+            set {
+                this.originField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public string Destination {
+            get {
+                return this.destinationField;
+            }
+            set {
+                this.destinationField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public System.DateTime Time_Departure {
+            get {
+                return this.time_DepartureField;
+            }
+            set {
+                this.time_DepartureField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public System.DateTime Time_Arrived {
+            get {
+                return this.time_ArrivedField;
+            }
+            set {
+                this.time_ArrivedField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public TimeSpan Duration {
+            get {
+                return this.durationField;
+            }
+            set {
+                this.durationField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public int MaxCapacity {
+            get {
+                return this.maxCapacityField;
+            }
+            set {
+                this.maxCapacityField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public int MaxRow {
+            get {
+                return this.maxRowField;
+            }
+            set {
+                this.maxRowField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public int MaxSeatsRow {
+            get {
+                return this.maxSeatsRowField;
+            }
+            set {
+                this.maxSeatsRowField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public int CompanyID {
+            get {
+                return this.companyIDField;
+            }
+            set {
+                this.companyIDField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public bool Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public string CompanyName {
+            get {
+                return this.companyNameField;
+            }
+            set {
+                this.companyNameField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public string Origin_Destination {
+            get {
+                return this.origin_DestinationField;
+            }
+            set {
+                this.origin_DestinationField = value;
             }
         }
     }
@@ -272,6 +478,32 @@ namespace FlightManagement.InsertSale {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Customer[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void GetTravelCompletedEventHandler(object sender, GetTravelCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTravelCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTravelCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Travel[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Travel[])(this.results[0]));
             }
         }
     }

@@ -20,6 +20,16 @@ namespace FlightManagement
             DDCustomer.DataTextField = "Name";
             DDCustomer.DataValueField = "Code";
             DDCustomer.DataBind();
+
+            InsertSale.InsertSale travels = new InsertSale.InsertSale();
+
+            Travel[] TravelList = travels.GetTravel();
+
+            DDFT.DataSource = TravelList;
+            DDFT.DataTextField = "Origin_Destination";
+            DDFT.DataValueField = "Code";
+            DDFT.DataBind();
+
         }
         //FALTA DEJAR LISTOS LOS ASIENTOS
         public GridViewRow GetValues()
