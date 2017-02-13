@@ -11,45 +11,29 @@ namespace FlightManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            InsertSale.InsertSale customers = new InsertSale.InsertSale();
-
-            Customer[] CustomerList = customers.GetCustomer();
-
-            DDCustomer.DataSource = CustomerList;
-            DDCustomer.DataTextField = Name;
-            DDCustomer.DataValueField = CustomerList.Code;
-            DDCustomer.DataBind();
-        }
-        //FALTA DEJAR LISTOS LOS ASIENTOS
-        public GridViewRow GetValues()
-        {
-            if (DDFT.SelectedValue != "Choose")
+            if (DDCustomer.DataValueField == "" && DDCustomer.DataTextField == "")
             {
-                GridViewRow row = GridView1.Rows[0];
-                foreach (GridViewRow Row in GridView1.Rows)
-                {
-                    if (Int32.Parse(DDFT.SelectedValue) == Int32.Parse(Row.Cells[0].Text.ToString()))
-                    {
-                        row = Row;
-                        TextBoxDeparture.Text = row.Cells[3].Text;
-                        TextBoxArrived.Text = row.Cells[4].Text;
-                        TextBoxCompany.Text = row.Cells[9].Text;
-                        break;
-                    }
-                }
-                return row;
+                InsertSale.InsertSale customers = new InsertSale.InsertSale();
+
+                Customer[] CustomerList = customers.GetCustomer();
+
+                DDCustomer.DataSource = CustomerList;
+                DDCustomer.DataTextField = "Name";
+                DDCustomer.DataValueField = "Code";
+                DDCustomer.DataBind();
             }
-            return null;
-        }
 
-        public void SetSeats() {
+            if (DDFT.DataValueField == "" && DDFT.DataTextField == "")
+            {
+                InsertSale.InsertSale travels = new InsertSale.InsertSale();
 
-            GridViewRow row = GetValues();
-            int Capacity = Int32.Parse(row.Cells[6].Text);
-            int Row      = Int32.Parse(row.Cells[7].Text);
-            int SeatsRow = Int32.Parse(row.Cells[8].Text);
+                Travel[] TravelList = travels.GetTravel();
 
-   
+                DDFT.DataSource = TravelList;
+                DDFT.DataTextField = "Origin_Destination";
+                DDFT.DataValueField = "Code";
+                DDFT.DataBind();
+            }
         }
 
         protected void ButtonGetValues_Click(object sender, EventArgs e)
@@ -66,13 +50,35 @@ namespace FlightManagement
             if (result.Result)
             {
                 LabelResult.Text = result.ResultDescription.ToString();
-                SetSeats();
+
+                InsertSale.InsertSale seat = new InsertSale.InsertSale();
+
+                Seats[] SeatsList = seat.GetSeats(Int32.Parse(DDFT.SelectedValue));
+
+                DDRow.Items.Clear();
+                DDRow.DataSource = SeatsList;
+                DDRow.DataTextField = "Full";
+                DDRow.DataValueField = "Full";
                 DDRow.DataBind();
             }
         }
         protected void DDFT_Change(object sender, EventArgs e)
         {
-            SetSeats();
+            InsertSale.InsertSale travel = new InsertSale.InsertSale();
+
+            Travel result = travel.GetTravelSelected(Int32.Parse(DDFT.SelectedValue));
+
+            TextBoxDeparture.Text = result.Time_Departure.ToString();
+            TextBoxArrived.Text = result.Time_Arrived.ToString();
+            TextBoxCompany.Text = result.CompanyName.ToString();
+
+            InsertSale.InsertSale seat = new InsertSale.InsertSale();
+
+            Seats[] SeatsList = seat.GetSeats(Int32.Parse(DDFT.SelectedValue));
+
+            DDRow.DataSource = SeatsList;
+            DDRow.DataTextField = "Full";
+            DDRow.DataValueField = "Full";
             DDRow.DataBind();
         }
     }

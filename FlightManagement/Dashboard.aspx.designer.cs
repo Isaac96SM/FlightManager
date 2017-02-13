@@ -40,15 +40,6 @@ namespace FlightManagement {
         protected global::System.Web.UI.WebControls.DropDownList DDCustomer;
         
         /// <summary>
-        /// Control SqlDataSourceCustomers.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCustomers;
-        
-        /// <summary>
         /// Control LabelFT.
         /// </summary>
         /// <remarks>
@@ -65,15 +56,6 @@ namespace FlightManagement {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDFT;
-        
-        /// <summary>
-        /// Control SqlDataSourceFT.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceFT;
         
         /// <summary>
         /// Control LDeparture.
@@ -139,15 +121,6 @@ namespace FlightManagement {
         protected global::System.Web.UI.WebControls.DropDownList DDRow;
         
         /// <summary>
-        /// Control SqlDataSourceRow.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceRow;
-        
-        /// <summary>
         /// Control ButtonGetValues.
         /// </summary>
         /// <remarks>
@@ -164,14 +137,5 @@ namespace FlightManagement {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelResult;
-        
-        /// <summary>
-        /// Control GridView1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }
