@@ -79,6 +79,46 @@
         </s:sequence>
       </s:complexType>
       <s:complexType name="TimeSpan" />
+      <s:element name="GetTravelSelected">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="parCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTravelSelectedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTravelSelectedResult" type="tns:Travel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSeats">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="parCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSeatsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSeatsResult" type="tns:ArrayOfSeats" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSeats">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Seats" nillable="true" type="tns:Seats" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Seats">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Row" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Seat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Full" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="SaleRequestSoapIn">
@@ -99,6 +139,18 @@
   <wsdl:message name="GetTravelSoapOut">
     <wsdl:part name="parameters" element="tns:GetTravelResponse" />
   </wsdl:message>
+  <wsdl:message name="GetTravelSelectedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTravelSelected" />
+  </wsdl:message>
+  <wsdl:message name="GetTravelSelectedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTravelSelectedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSeatsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSeats" />
+  </wsdl:message>
+  <wsdl:message name="GetSeatsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSeatsResponse" />
+  </wsdl:message>
   <wsdl:portType name="InsertSaleSoap">
     <wsdl:operation name="SaleRequest">
       <wsdl:input message="tns:SaleRequestSoapIn" />
@@ -111,6 +163,14 @@
     <wsdl:operation name="GetTravel">
       <wsdl:input message="tns:GetTravelSoapIn" />
       <wsdl:output message="tns:GetTravelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelSelected">
+      <wsdl:input message="tns:GetTravelSelectedSoapIn" />
+      <wsdl:output message="tns:GetTravelSelectedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeats">
+      <wsdl:input message="tns:GetSeatsSoapIn" />
+      <wsdl:output message="tns:GetSeatsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InsertSaleSoap" type="tns:InsertSaleSoap">
@@ -142,6 +202,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTravelSelected">
+      <soap:operation soapAction="http://tempuri.org/GetTravelSelected" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeats">
+      <soap:operation soapAction="http://tempuri.org/GetSeats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InsertSaleSoap12" type="tns:InsertSaleSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -165,6 +243,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetTravel">
       <soap12:operation soapAction="http://tempuri.org/GetTravel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelSelected">
+      <soap12:operation soapAction="http://tempuri.org/GetTravelSelected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeats">
+      <soap12:operation soapAction="http://tempuri.org/GetSeats" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

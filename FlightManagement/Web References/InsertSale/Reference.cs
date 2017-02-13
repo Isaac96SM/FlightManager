@@ -35,6 +35,10 @@ namespace FlightManagement.InsertSale {
         
         private System.Threading.SendOrPostCallback GetTravelOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetTravelSelectedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetSeatsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -81,6 +85,12 @@ namespace FlightManagement.InsertSale {
         
         /// <remarks/>
         public event GetTravelCompletedEventHandler GetTravelCompleted;
+        
+        /// <remarks/>
+        public event GetTravelSelectedCompletedEventHandler GetTravelSelectedCompleted;
+        
+        /// <remarks/>
+        public event GetSeatsCompletedEventHandler GetSeatsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaleRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -172,6 +182,64 @@ namespace FlightManagement.InsertSale {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTravelSelected", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Travel GetTravelSelected(int parCode) {
+            object[] results = this.Invoke("GetTravelSelected", new object[] {
+                        parCode});
+            return ((Travel)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTravelSelectedAsync(int parCode) {
+            this.GetTravelSelectedAsync(parCode, null);
+        }
+        
+        /// <remarks/>
+        public void GetTravelSelectedAsync(int parCode, object userState) {
+            if ((this.GetTravelSelectedOperationCompleted == null)) {
+                this.GetTravelSelectedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTravelSelectedOperationCompleted);
+            }
+            this.InvokeAsync("GetTravelSelected", new object[] {
+                        parCode}, this.GetTravelSelectedOperationCompleted, userState);
+        }
+        
+        private void OnGetTravelSelectedOperationCompleted(object arg) {
+            if ((this.GetTravelSelectedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTravelSelectedCompleted(this, new GetTravelSelectedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSeats", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Seats[] GetSeats(int parCode) {
+            object[] results = this.Invoke("GetSeats", new object[] {
+                        parCode});
+            return ((Seats[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSeatsAsync(int parCode) {
+            this.GetSeatsAsync(parCode, null);
+        }
+        
+        /// <remarks/>
+        public void GetSeatsAsync(int parCode, object userState) {
+            if ((this.GetSeatsOperationCompleted == null)) {
+                this.GetSeatsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSeatsOperationCompleted);
+            }
+            this.InvokeAsync("GetSeats", new object[] {
+                        parCode}, this.GetSeatsOperationCompleted, userState);
+        }
+        
+        private void OnGetSeatsOperationCompleted(object arg) {
+            if ((this.GetSeatsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSeatsCompleted(this, new GetSeatsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -219,6 +287,51 @@ namespace FlightManagement.InsertSale {
             }
             set {
                 this.resultDescriptionField = value;
+            }
+        }
+    }
+    
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Seats {
+        
+        private int rowField;
+        
+        private string seatField;
+        
+        private string fullField;
+        
+        /// <comentarios/>
+        public int Row {
+            get {
+                return this.rowField;
+            }
+            set {
+                this.rowField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public string Seat {
+            get {
+                return this.seatField;
+            }
+            set {
+                this.seatField = value;
+            }
+        }
+        
+        /// <comentarios/>
+        public string Full {
+            get {
+                return this.fullField;
+            }
+            set {
+                this.fullField = value;
             }
         }
     }
@@ -504,6 +617,58 @@ namespace FlightManagement.InsertSale {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Travel[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void GetTravelSelectedCompletedEventHandler(object sender, GetTravelSelectedCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTravelSelectedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTravelSelectedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Travel Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Travel)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void GetSeatsCompletedEventHandler(object sender, GetSeatsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSeatsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSeatsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Seats[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Seats[])(this.results[0]));
             }
         }
     }
